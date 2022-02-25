@@ -1,0 +1,26 @@
+{
+  "name": "collatz",
+  "version": "0.0.0",
+  "description": "Collatz tree visualisation",
+  "main": "src/index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GMartigny/Collatz.git"
+  },
+  "keywords": [
+    "Math",
+    "2d"
+  ],
+  "author": "GMartigny",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GMartigny/Collatz/issues"
+  },
+  "homepage": "https://github.com/GMartigny/Collatz#readme",
+  "dependencies": {
+    "allow-cors": "^1.0.0",
+    "canvas": "^2.8.0",
+    "pencil.js": "^2.2.1"
+  }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Collatz</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+        * {
+            position: absolute;
+        }
+        select {
+            left: 10px;
+            bottom: 10px;
+        }
+    </style>
+</head>
+<img id="target" src="" alt="Collatz tree visualisation">
+<script type="module">
+    /* global Pencil */
+    import "https://unpkg.com/pencil.js@2.2.1/dist/pencil.min.js";
+    import { work } from "./src/";
+    import { inject } from "./src/display.js";
+
+    const draw = inject(Pencil);
+
+    const select = document.createElement("select");
+    [...new Array(29)].forEach((_, i) => {
+        const level = i + 2;
+        const option = document.createElement("option");
+        option.textContent = level;
+        option.value = level;
+        select.appendChild(option);
+    });
+    document.body.appendChild(select);
+    select.value = 17;
+
+    const image = document.getElementById("target");
+    const timer = "Generate image in";
+    function generateImage() {
+        console.time(timer)
+        const data = work(select.value);
+        image.src = draw(data, {
+            width: window.innerWidth,
+            height: window.innerHeight,
+        });
+        console.timeEnd(timer);
+    }
+
+    select.addEventListener("change", generateImage);
+    generateImage();
+</script>
+<body>
+</body>
+</html>
